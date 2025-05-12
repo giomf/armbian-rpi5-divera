@@ -1,0 +1,15 @@
+[Unit]
+Description=Weston Wayland Compositor (Kiosk Mode)
+After=network.target
+
+[Service]
+User=root
+Environment=XDG_RUNTIME_DIR=/run/user/0
+ExecStartPre=/bin/mkdir -p /run/user/0
+ExecStartPre=/bin/chmod 0700 /run/user/0
+ExecStart=/usr/bin/weston --tty=1
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
