@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# Browser-Skript für Kiosk-Modus
-chromium-browser \
+chromium \
+  --no-sandbox \
+  --enable-features=UseOzonePlatform \
+  --ozone-platform=wayland \
   --kiosk \
   --disable-features=TranslateUI \
   --disable-infobars \
