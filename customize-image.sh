@@ -22,10 +22,17 @@ Main() {
 	# Remove first login setup
 	rm /root/.not_logged_in_yet
 	usermod -p "$y$j9T$xaMA4if3koVWt.ufxLrS50$fyBx2ZQZoDLlS5mu7ZVJsMQFm6AdZIp9KkGMOuS4XN4" root
+	timedatectl set-timezone Europe/Berlin
 
 	# Install required packages
 	apt-get update
 	apt-get install -y vim seatd weston chromium
+
+	weston
+
+}
+
+function weston(){
 
 	# Create weston configuration directory
 	mkdir -p /etc/xdg/weston
@@ -43,6 +50,6 @@ Main() {
 	# Enable the service
 	systemctl enable weston.service
 	
-} # Main
+}
 
 Main "$@"
